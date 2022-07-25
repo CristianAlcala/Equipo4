@@ -43,8 +43,6 @@ public class FilmsRegisterController {
 		
 		FilmRegisterDTO filmRegister = new FilmRegisterDTO();
 		
-		filmRegister.addActor("NOMBRE");
-		
 		model.addAttribute("register", filmRegister);
 		
 		model.addAttribute("categories", categories);

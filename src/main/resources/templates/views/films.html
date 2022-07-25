@@ -24,7 +24,7 @@
 				<input type="number" th:field="*{film.rentalDuration}" /><br/>
 				
 				<label>Costo de renta:</label>
-				<input type="number" th:field="*{film.rentalRate}" /><br/>
+				<input type="number" min="0" step="0.01" th:field="*{film.rentalRate}" /><br/>
 				
 				<label>Duraci&oacute;n de al pel&iacute;cula:</label>
 				<input type="number" th:field="*{film.length}" /><br/>
@@ -66,9 +66,6 @@
 				  <option th:each="act : ${actorList}" 
 				          th:value="${act.firstName + ' ' + act.lastName}"></option>
 				</datalist>
-				
-				<label>Clasificaci&oacute;n:</label>
-				<input type="text" th:field="*{film.rating}"/><br/>
 				
 				<button type="submit">Registrar</button>
 				
