@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	lang="es-MX">
+<div th:replace="layout/header :: estilos"></div>
+<body>
+	<div th:replace="layout/header :: header"></div>
+	<div class="d-flex" id="wrapper">
+		<div th:replace="layout/header :: menu"></div>
+		<div id="page-content-wrapper" style="width:100%;">
+			<!-- Page content-->
+			Registrar Renta
+			
+			<div class="modal-header">Rentas</div>
+			<form>
+			<label>Cliente:</label><br/>
+			<label>Staff:</label><br/>
+			<label>Pelicula:</label><br/>
+			</form>
+			
+			
+		</div>
+		
+
+	</div>
+	<div th:replace="layout/header :: footer"></div>
+	<div th:replace="layout/header :: scripts"></div>
+	<script th:src="@{assets/js/index.js}"></script>
+</body>
+
+</html>

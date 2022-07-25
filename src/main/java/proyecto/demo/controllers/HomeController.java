@@ -30,6 +30,7 @@ import proyecto.demo.entities.Actor;
 import proyecto.demo.entities.CatalogoIndex;
 import proyecto.demo.entities.Category;
 import proyecto.demo.entities.Film;
+import proyecto.demo.entities.FilmRegisterDTO;
 import proyecto.demo.entities.Language;
 import proyecto.demo.repository.CategoryRepository;
 import proyecto.demo.services.ActorService;
@@ -144,6 +145,12 @@ public class HomeController {
 		Map<String, Object> response = new HashMap<>();		
 		response.put("result", inventoryService.findByInventoryId(inventoryId));		
 		return response;
+	}
+	
+	@GetMapping(value="rental")
+	public String rentalmap(Model model) {
+		
+		return "/views/rental";
 	}
 	
 	
