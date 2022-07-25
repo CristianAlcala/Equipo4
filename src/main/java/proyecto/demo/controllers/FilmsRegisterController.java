@@ -42,10 +42,13 @@ public class FilmsRegisterController {
 		List<Language> languages = languageService.findAll();
 		
 		FilmRegisterDTO filmRegister = new FilmRegisterDTO();
-
+		
+		filmRegister.addActor("NOMBRE");
+		
 		model.addAttribute("register", filmRegister);
+		
 		model.addAttribute("categories", categories);
-		model.addAttribute("actors", actors);
+		model.addAttribute("actorList", actors);
 		model.addAttribute("languages", languages);
 		
 		return "/views/films";
@@ -53,9 +56,9 @@ public class FilmsRegisterController {
 	
 	
 	@GetMapping(value="film-register")
-	public String registerFilm(@ModelAttribute("film") Film film,  HttpServletRequest request) {
-		System.out.println(film);
-		filmService.guardar(film);
+	public String registerFilm(@ModelAttribute("register") FilmRegisterDTO register ,  HttpServletRequest request) {
+		System.out.println(register.toString());
+		//filmService.guardar(film);
 		return "/views/films";
 	}
 	

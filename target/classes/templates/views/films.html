@@ -12,42 +12,42 @@
 			
 			<div class="modal-header">Datos Generales</div>
 			
-			<form action="/" th:action="@{/film-register}" th:object="${film}" >
+			<form action="/" th:action="@{/film-register}" th:object="${register}" >
 				
 				<label>T&iacute;tulo:</label>
-				<input type="text" th:field="*{title}" /><br/>
+				<input type="text" th:field="*{film.title}" /><br/>
 				
 				<label>Descripci&oacute;n:</label>
-				<input type="text" th:field="*{description}" /><br/>
+				<input type="text" th:field="*{film.description}" /><br/>
 				
 				<label>Duraci&oacute;n de la renta:</label>
-				<input type="text" th:field="*{rentalDuration}" /><br/>
+				<input type="number" th:field="*{film.rentalDuration}" /><br/>
 				
 				<label>Costo de renta:</label>
-				<input type="text" th:field="*{rentalRate}" /><br/>
+				<input type="number" th:field="*{film.rentalRate}" /><br/>
 				
 				<label>Duraci&oacute;n de al pel&iacute;cula:</label>
-				<input type="text" th:field="*{length}" /><br/>
+				<input type="number" th:field="*{film.length}" /><br/>
 				
 				<label>Costo de reemplazo:</label>
-				<input type="text" th:field="*{replacementCost}" /><br/>
+				<input type="number" th:field="*{film.replacementCost}" /><br/>
 				
 				<label>Lenguaje:</label>
-				<select id="language-select" th:name="language">
+				<select id="language-select" th:name="language" th:value="*{languageId}">
 				  <option th:each="language : ${languages}" 
 				          th:value="${language.language_id}" 
 				          th:text="${language.name}"></option>
 				</select><br/>
 				
 				<label>Clasificaci&oacute;n:</label>
-				<input type="text" th:field="*{rating}" /><br/>
+				<input type="text" th:field="*{film.rating}" /><br/>
 				
 				
 				<div class="modal-header">Datos adicionales</div>
 				
 				<label>Categor&iacute;a:</label>
 				
-				<select id="category-select" th:name="categoryId">
+				<select id="category-select" th:name="categoryId" th:value="*{categoryId}">
 				  <option th:each="category : ${categories}" 
 				          th:value="${category.id}" 
 				          th:text="${category.name}"></option>
@@ -55,12 +55,20 @@
 				
 				<label>Actores:</label><br/>
 				
-				<input list="actor-list">
-				<datalist id="actor-list">
-				  <option th:each="actor : ${actors}" 
-				          th:value="${actor.id}" 
-				          th:text="${actor.firstName + ' ' + actor.lastName}"></option>
-				</datalist>  
+				<ol id="actor-list">
+					<li th:each="actor, liStat : *{actors}">
+						<input type="text" list="actor-data-list" th:value="${actor}" name="actors[]">
+					</li>
+				</ol>
+				<button type="button" onclick="add_actor_to_list()">Agregar Actor</button><br/>
+				
+				<datalist id="actor-data-list">
+				  <option th:each="act : ${actorList}" 
+				          th:value="${act.firstName + ' ' + act.lastName}"></option>
+				</datalist>
+				
+				<label>Clasificaci&oacute;n:</label>
+				<input type="text" th:field="*{film.rating}"/><br/>
 				
 				<button type="submit">Registrar</button>
 				
@@ -73,6 +81,12 @@
 	<div th:replace="layout/header :: footer"></div>
 	<div th:replace="layout/header :: scripts"></div>
 	<script th:src="@{assets/js/index.js}"></script>
+	
+	<script language="javascript">
+		function add_actor_to_list() {
+		    $("#actor-list").append('<li><input type="text" list="actor-data-list" name="actors[]"></li>');
+		}
+	</script>
 </body>
 
 </html>
