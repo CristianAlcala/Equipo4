@@ -12,7 +12,7 @@
 
 <body>
 
-<form style="text-align: center;" th:action="@{/Rclientes}" method="POST" class="Form">
+<form style="text-align: center;" th:action="@{/Rclientes}" th:object="${Cliente}" method="POST" class="Form">
 		<div class="clientes">
 			<div class="Rclientes-screen">
 				<div class="app-title">
@@ -22,7 +22,7 @@
 	
 				<div class="Rcliente-form">
 					<div class="control-group">
-					<input type="text" id="firstName" name="NfirstName" class="Rcliente-field" value="" placeholder="First Name"
+					<input type="text" th:field="*{firstName}" class="Rcliente-field" value="" placeholder="First Name"
 					>
 					<label class="Rcliente-field-icon fui-user" for="Nombre-cliente"></label>
 					</div>
