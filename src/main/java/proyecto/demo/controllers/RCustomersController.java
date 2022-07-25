@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RCustomersController {
 
-@GetMapping("/registroClientes")
+@GetMapping("/customers")
 public String ObtenerVistaRegistro(@RequestParam(value="error", required = false) String error, Model model, Principal principal) {
 	if (error != null) 
 		model.addAttribute("error","Escribio algun dato incorrecto");
