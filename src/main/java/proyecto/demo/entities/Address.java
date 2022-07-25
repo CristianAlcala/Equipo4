@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="address")
 
-public class address {
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
