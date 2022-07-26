@@ -14,7 +14,7 @@ import proyecto.demo.entities.Store;
 @Controller
 public class RCustomersController {
 
-@GetMapping("/customers")
+@GetMapping("/registroClientes")
 public String ObtenerVistaRegistro(@RequestParam(value="error", required = false) String error, Model model, Principal principal) {
 	if (error != null) {
 		model.addAttribute("error","Escribio algun dato incorrecto");
