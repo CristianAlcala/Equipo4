@@ -9,15 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import proyecto.demo.entities.Customer;
+import proyecto.demo.entities.Store;
 
 @Controller
 public class RCustomersController {
 
 @GetMapping("/customers")
 public String ObtenerVistaRegistro(@RequestParam(value="error", required = false) String error, Model model, Principal principal) {
-	if (error != null) 
+	if (error != null) {
 		model.addAttribute("error","Escribio algun dato incorrecto");
-		model.addAttribute("Cliente", new Customer());
+
+//		Store tienda = new Store();
+		
+	//	Customer cliente = new Customer();
+	
+	//	cliente.setStoreId(tienda);
+		
+	}
+	model.addAttribute("Cliente", new Customer());
+
 		
 	return "views/registroClientes";
 	}

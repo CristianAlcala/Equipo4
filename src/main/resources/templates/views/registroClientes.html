@@ -29,22 +29,22 @@
 					
 					
 					<div class="control-group">
-					<input type="text" id="segundoNombre" name="NLastname" class="Rcliente-field" value="" placeholder="LastName">
+					<input type="text" th:field="*{lastName}"  class="Rcliente-field" value="" placeholder="Last Name">
 					<label class="Rcliente-field-icon fui-user" for="Nombre-cliente"></label>
 					</div>
 					
 					<div class="control-group">
-					<input type="text" id="email" name="Nemail" class="Rcliente-field" value="" placeholder="email">
+					<input type="text" th:field="*{email}" name="Nemail" class="Rcliente-field" value="" placeholder="email">
 					<label class="login-field-icon fui-user" for="Email-cliente"></label>
 					</div>
 					
 					<div class="control-group">
-					<input type="text" id="direccion" name="Ndireccion" class="Rcliente-field" value="" placeholder="Direccion">
+					<input type="text" th:field="*{addressId}"  name="Ndireccion" class="Rcliente-field" value="" placeholder="Direccion">
 					<label class="login-field-icon fui-user" for="direccion-cliente"></label>
 					</div>
 					
 					<div class="control-group">
-					<input type="text" id="sucursal" name="Nsucursal" class="Rcliente-field" value="" placeholder="Sucursal">
+					<input type="text" th:field="*{store.storeId}" name="Nsucursal" class="Rcliente-field" value="" placeholder="Sucursal">
 					<label class="login-field-icon fui-user" for="direccion-cliente"></label>
 					</div>
 			

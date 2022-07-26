@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,6 +20,13 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="customer_id")
 	private Integer customerId;
+	
+	//relacion con store
+	
+	@OneToOne
+	@JoinColumn(name="store_id")
+	private Store store;
+	
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -38,6 +47,14 @@ public class Customer {
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Store getStore() {
+		return store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
 	}
 
 	public Integer getCustomerId() {
