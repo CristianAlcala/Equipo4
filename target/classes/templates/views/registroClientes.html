@@ -10,7 +10,6 @@
 			<!-- Page content-->
 			Registrar Nuevo Cliente
 			
-			<div class="modal-header">Datos Generales</div>
 			<form style="text-align: center;" th:action="@{/Rclientes}" th:object="${Cliente}" method="POST" class="Form">
 				<div class="clientes">
 					<div class="Rclientes-screen">
@@ -18,7 +17,9 @@
 							<h1>Registro de clientes</h1>
 							<p class="text-danger" th:if="${error} != null" th:text="${error}"></p>
 						</div>
-			
+						
+						<div class="modal-header">Datos Generales</div>
+						
 						<div class="Rcliente-form">
 							<div class="control-group">
 							<input type="text" th:field="*{firstName}" class="Rcliente-field" value="" placeholder="First Name"
@@ -36,6 +37,8 @@
 							<input type="text" th:field="*{email}" name="Nemail" class="Rcliente-field" value="" placeholder="email">
 							<label class="login-field-icon fui-user" for="Email-cliente"></label>
 							</div>
+							
+							<div class="modal-header">Direcci&oacute;n</div>
 							
 							<div class="control-group">
 							<input type="text" th:field="*{addressId}"  name="Ndireccion" class="Rcliente-field" value="" placeholder="Direccion">
@@ -63,12 +66,6 @@
 	<div th:replace="layout/header :: footer"></div>
 	<div th:replace="layout/header :: scripts"></div>
 	<script th:src="@{assets/js/index.js}"></script>
-	
-	<script language="javascript">
-		function add_actor_to_list() {
-		    $("#actor-list").append('<li><input type="text" list="actor-data-list" name="actors[]"></li>');
-		}
-	</script>
 </body>
 
 </html>
