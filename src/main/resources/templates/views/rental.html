@@ -11,11 +11,32 @@
 			Registrar Renta
 			
 			<div class="modal-header">Rentas</div>
-			<form>
-			<label>Cliente:</label><br/>
-			<label>Staff:</label><br/>
-			<label>Pelicula:</label><br/>
+			<form action="/" th:action="@{/rental-search}" th:object="${rentanueva}">
+			<label>Cliente:</label>
+			<br/>
+			<label>Staff:</label>
+			<select id="staff-select" th:name="staffS" th:value="*{staff}">
+				  <option th:each="staffS : ${stafflist}" 
+				          th:value="${staffS.staff_id}" 
+				          th:text="${staffS.first_name+ ' '+ staffS.last_name}"></option>
+			</select><br/>
+			<label>Pelicula:</label>
+						<input type="tel" list="filmlist" th:value="*{product}">
+				<datalist id="filmlist">
+				  <option th:each="inventory : ${inventoryList}" 
+				          th:value="${inventory.inventoryId}"></option>
+				</datalist>
+			<br/>
 			</form>
+			<button>Buscar</button>
+			<div class="modal-header">Informacion de renta</div>
+			<label>Titulo:</label>
+			<label id="titulo"></label><br/>
+			<label>Tarifa:</label>
+			<label id="tarifa"></label><br/>
+			<label>Dias de renta:</label>
+			<label id="rentalTime"></label><br/>
+			<button type= "submit">Rentar</button>
 			
 			
 		</div>

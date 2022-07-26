@@ -1,5 +1,6 @@
 package proyecto.demo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,13 @@ public class StaffService {
 	
 	public Staff obtenerPorId(Integer staffId) {
 		
-		Optional<Staff> staff = repo.findById(null);
+		Optional<Staff> staff = repo.findById(staffId);
 		
 		return staff.get();
+	}
+	
+	public List<Staff> findAll() {
+		return repo.findAll();
 	}
 }
 

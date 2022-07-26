@@ -26,19 +26,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lowagie.text.DocumentException;
 
-import proyecto.demo.entities.Actor;
 import proyecto.demo.entities.CatalogoIndex;
 import proyecto.demo.entities.Category;
+import proyecto.demo.entities.Customer;
 import proyecto.demo.entities.Film;
-import proyecto.demo.entities.FilmRegisterDTO;
-import proyecto.demo.entities.Language;
-import proyecto.demo.repository.CategoryRepository;
-import proyecto.demo.services.ActorService;
+import proyecto.demo.entities.Inventory;
+import proyecto.demo.entities.Rental;
+import proyecto.demo.entities.Staff;
 import proyecto.demo.services.CategoryService;
 import proyecto.demo.services.FilmService;
 import proyecto.demo.services.InventoryService;
 import proyecto.demo.services.pdf.FilmPDFExporter;
-import proyecto.demo.services.LanguageService;
+import proyecto.demo.services.StaffService;
 
 @Controller
 public class HomeController {
@@ -51,6 +50,9 @@ public class HomeController {
 	
 	@Autowired
 	private InventoryService inventoryService;
+	
+	@Autowired
+	private StaffService staffService;
 
 	@RequestMapping(value = {"/","index"})
 	public String index(Model model, HttpServletRequest request, HttpServletResponse response, Principal principal) {
@@ -149,8 +151,22 @@ public class HomeController {
 	
 	@GetMapping(value="rental")
 	public String rentalmap(Model model) {
+		Rental rentanueva =new Rental();
+		List<Staff> stafflist = staffService.findAll();
+		List<Inventory> inventoryList = inventoryService.findAll();
+		//List<Customer> clients =
+		model.addAttribute("rentanueva", rentanueva);
+		model.addAttribute("stafflist",stafflist);
+		model.addAttribute("inventoryList",inventoryList);
 		
 		return "/views/rental";
+	}
+	
+	@GetMapping(value="rental-search")
+	@ResponseBody
+	public void rentaSearch() {
+		
+		
 	}
 	
 	

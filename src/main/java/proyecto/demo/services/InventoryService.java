@@ -1,5 +1,7 @@
 package proyecto.demo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,8 @@ public class InventoryService implements IInventoryService {
 	public Inventory findByInventoryId(Integer inventoryId) {
 		return inventoryRepository.findByInventoryId(inventoryId);
 	}
-
+	
+	public List<Inventory> findAll() {
+		return inventoryRepository.findAll();
+	}
 }
